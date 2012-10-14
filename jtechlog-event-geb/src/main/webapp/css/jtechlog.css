@@ -1,0 +1,10 @@
+#content {
+  text-align: center;
+}
+
+#logo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+}

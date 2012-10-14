@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Status</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link href="/css/jtechlog.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        $j = jQuery.noConflict();
+    </script>
+    <script type="text/javascript" src="dwr/engine.js"></script>
+    <script type="text/javascript" src="dwr/util.js"></script>
+    <script type="text/javascript" src="dwr/interface/statusDwrService.js"></script>
+
+    <script type="text/javascript">
+        // http://docs.jquery.com/Using_jQuery_with_Other_Libraries
+        $j(function () {
+            dwr.engine.setActiveReverseAjax(true);
+            $j("#statusForm").submit(function () {
+                statusDwrService.postStatus($j("#statusInput").val());
+                return false;
+            });
+        });
+
+        function showStatus(status) {
+            $j("#statusDiv").html(status);
+        }
+    </script>
+</head>
+<body>
+<div id="content">
+
+    <form id="statusForm" action="/">
+        <input id="statusInput" type="text" name="status"/>
+        <input type="submit" value="Post"/>
+    </form>
+
+    <div id="statusDiv"></div>
+
+    <div id="logo"><img src="img/dragon.png"/></div>
+
+</div>
+
+</body>
+</html>
